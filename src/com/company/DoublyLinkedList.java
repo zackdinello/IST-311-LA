@@ -43,8 +43,15 @@ public class DoublyLinkedList <T extends Comparable<T>> {
 
 
     public int getIndex(Album album) {
-
-
+        int index = 0;
+        Node temp = head;
+        while (temp != null){
+            if(temp.data == album){
+                return index;
+            }
+            temp = temp.next;
+        }
+    return -1;
     }
 
 
@@ -61,7 +68,11 @@ public class DoublyLinkedList <T extends Comparable<T>> {
             int size = 0;
             Node temp = head;
             while (temp != null){
+                temp = temp.next;
                 size++;
+            }
+            if(location > size){
+                throw new IllegalArgumentException();
             }
             if(location == size+1){
 
@@ -97,7 +108,7 @@ public class DoublyLinkedList <T extends Comparable<T>> {
 
                 //The temp node points to the node that is next to current
                 temp1 = current.next;
-                temp.previous = current;
+                temp1.previous = current;
 
                 //newNode will be added between current and temp
                 current.next = newNode;

@@ -164,31 +164,31 @@ public class DoublyLinkedList <T extends Comparable<T>> {
         return newNode;
     }
 
-//
-//    public Node shuffle() {
-//        Node temp = head;
-//        int randomX = (int) (Math.random() * 10 + 1);
-//
-////simply go until the randomX
-//        while(randomX-- > 0 && temp.next != null)
-//            temp = temp.next;
-//
-////remove the Nth node from the list
-//        temp.previous.next = temp.next;
-//
-//        if(temp.next != null)
-//            temp.next.previous = temp.previous;
-//
-////set it to point to the head
-//        temp.next = (head);
-//        temp.previous = (null);
-//
-////now set the Head to the Nth node we found
-//        head = temp;
-//        return head;
-//    }
-//
-//
+
+    public Node shuffle() {
+        Node temp = head;
+        int randomX = (int) (Math.random() * 10 + 1);
+
+//simply go until the randomX
+        while(randomX-- > 0 && temp.next != null)
+            temp = temp.next;
+
+//remove the Nth node from the list
+        temp.previous.next = temp.next;
+
+        if(temp.next != null)
+            temp.next.previous = temp.previous;
+
+//set it to point to the head
+        temp.next = (head);
+        temp.previous = (null);
+
+//now set the Head to the Nth node we found
+        head = temp;
+        return head;
+    }
+
+
     public DoublyLinkedList<Album> partition(Album album) {
         DoublyLinkedList<Album> list = new DoublyLinkedList<>();
         Node temp = head;

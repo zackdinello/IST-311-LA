@@ -1,6 +1,9 @@
 package com.company;
 
 
+import javax.swing.*;
+import java.util.List;
+
 public class DoublyLinkedList <T extends Comparable<T>> {
 
     protected Node head;
@@ -38,7 +41,55 @@ public class DoublyLinkedList <T extends Comparable<T>> {
 
 
     public Node delete(int location) throws IllegalArgumentException{
+        Node temp1 = null;
+        int size = 0;
+        Node temp = head;
+        while (temp != null){
+            temp = temp.next;
+            size++;
+        }
 
+        //Check whether the DDL is empty or not
+        if(head == null || location>size) {
+            throw new IllegalArgumentException();
+            //System.out.println("\n" +position +"th position is not available\n");
+        }
+        //Execute when the DDL is not empty
+        else {
+            if(location == 1){
+
+                //Call deleteFirstNode() method to delete first node from the DDL
+                temp1 = head;
+                head = head.next;
+
+                //Decrement the size of DDL
+
+
+            }else if(location == size){
+                //Call deleteLastNode() method to delete last node from the DDL
+                temp1 = tail;
+                tail = tail.previous;
+
+                //Decrement the size of DDL
+
+
+            }else{
+                //current node will point to head
+                Node current = head;
+
+                //Iterate list till current points to the specified position
+                for(int i = 1; i < location; i++){
+                    current = current.next;
+                }
+
+                //Delete node pointed by current
+                temp1  = current;
+                current.next.previous = current.previous;
+                current.previous.next = current.next;
+
+            }
+            return temp1;
+        }
     }
 
 
@@ -46,7 +97,7 @@ public class DoublyLinkedList <T extends Comparable<T>> {
         int index = 0;
         Node temp = head;
         while (temp != null){
-            if(temp.data == album){
+            if(temp.album == album){
                 return index;
             }
             temp = temp.next;
@@ -123,14 +174,42 @@ public class DoublyLinkedList <T extends Comparable<T>> {
 
 
     public Node shuffle() {
+        Node temp = head;
+        int randomX = (int) (Math.random() * 10 + 1);
 
+//simply go until the randomX
+        while(randomX-- > 0 && temp.next != null)
+            temp = temp.next;
 
+//remove the Nth node from the list
+        temp.previous.next = temp.next;
+
+        if(temp.next != null)
+            temp.next.previous = temp.previous;
+
+//set it to point to the head
+        temp.next = (head);
+        temp.previous = (null);
+
+//now set the Head to the Nth node we found
+        head = temp;
+        return head;
     }
 
 
     public DoublyLinkedList<Album> partition(Album album) {
+        DoublyLinkedList<Album> list = new DoublyLinkedList<>();
+        Node temp = head;
+        while (temp != null) {
+            if (temp.album.compareTo(album) == 1) {
+                list.append(album);
+            } else if (temp.album.compareTo(album) > 1) {
+                list.append(album);
+            }
+                temp = temp.next;
 
-
+        }
+        return list;
     }
 
 

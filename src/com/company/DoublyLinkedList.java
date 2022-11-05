@@ -15,84 +15,84 @@ public class DoublyLinkedList <T extends Comparable<T>> {
         tail = null;
     }
 
-//
-//    public Node append(Album album) {
-//
-//        //create a new node
-//        Node toAppend = new Node(album);
-//
-//        //check if list is empty
-//        if (head == null) {
-//            head = toAppend;
-//            tail = toAppend;
-//        }
-//
-//        //if list length is one or more than one
-//        else {
-//            toAppend.previous = tail;
-//            tail.next = toAppend;
-//            tail = tail.next;
-//        }
-//
-//
-//        //return node
-//        return toAppend;
-//    }
-//
-//
-//    public Node delete(int location) throws IllegalArgumentException{
-//        Node temp1 = null;
-//        int size = 0;
-//        Node temp = head;
-//        while (temp != null){
-//            temp = temp.next;
-//            size++;
-//        }
-//
-//        //Check whether the DDL is empty or not
-//        if(head == null || location>size) {
-//            throw new IllegalArgumentException();
-//            //System.out.println("\n" +position +"th position is not available\n");
-//        }
-//        //Execute when the DDL is not empty
-//        else {
-//            if(location == 1){
-//
-//                //Call deleteFirstNode() method to delete first node from the DDL
-//                temp1 = head;
-//                head = head.next;
-//
-//                //Decrement the size of DDL
-//
-//
-//            }else if(location == size){
-//                //Call deleteLastNode() method to delete last node from the DDL
-//                temp1 = tail;
-//                tail = tail.previous;
-//
-//                //Decrement the size of DDL
-//
-//
-//            }else{
-//                //current node will point to head
-//                Node current = head;
-//
-//                //Iterate list till current points to the specified position
-//                for(int i = 1; i < location; i++){
-//                    current = current.next;
-//                }
-//
-//                //Delete node pointed by current
-//                temp1  = current;
-//                current.next.previous = current.previous;
-//                current.previous.next = current.next;
-//
-//            }
-//            return temp1;
-//        }
-//    }
-//
-//
+
+    public Node append(Album album) {
+
+        //create a new node
+        Node toAppend = new Node(album);
+
+        //check if list is empty
+        if (head == null) {
+            head = toAppend;
+            tail = toAppend;
+        }
+
+        //if list length is one or more than one
+        else {
+            toAppend.previous = tail;
+            tail.next = toAppend;
+            tail = tail.next;
+        }
+
+
+        //return node
+        return toAppend;
+    }
+
+
+    public Node delete(int location) throws IllegalArgumentException{
+        Node temp1 = null;
+        int size = 0;
+        Node temp = head;
+        while (temp != null){
+            temp = temp.next;
+            size++;
+        }
+
+        //Check whether the DDL is empty or not
+        if(head == null || location>size) {
+            throw new IllegalArgumentException();
+            //System.out.println("\n" +position +"th position is not available\n");
+        }
+        //Execute when the DDL is not empty
+        else {
+            if(location == 1){
+
+                //Call deleteFirstNode() method to delete first node from the DDL
+                temp1 = head;
+                head = head.next;
+
+                //Decrement the size of DDL
+
+
+            }else if(location == size){
+                //Call deleteLastNode() method to delete last node from the DDL
+                temp1 = tail;
+                tail = tail.previous;
+
+                //Decrement the size of DDL
+
+
+            }else{
+                //current node will point to head
+                Node current = head;
+
+                //Iterate list till current points to the specified position
+                for(int i = 1; i < location; i++){
+                    current = current.next;
+                }
+
+                //Delete node pointed by current
+                temp1  = current;
+                current.next.previous = current.previous;
+                current.previous.next = current.next;
+
+            }
+            return temp1;
+        }
+    }
+
+
     public int getIndex(Album album) {
         int i = 1;
         boolean flag = false;
@@ -189,21 +189,21 @@ public class DoublyLinkedList <T extends Comparable<T>> {
 //    }
 //
 //
-//    public DoublyLinkedList<Album> partition(Album album) {
-//        DoublyLinkedList<Album> list = new DoublyLinkedList<>();
-//        Node temp = head;
-//        while (temp != null) {
-//            if (temp.album.compareTo(album) == 1) {
-//                list.append(album);
-//            } else if (temp.album.compareTo(album) > 1) {
-//                list.append(album);
-//            }
-//                temp = temp.next;
-//
-//        }
-//        return list;
-//    }
-//
+    public DoublyLinkedList<Album> partition(Album album) {
+        DoublyLinkedList<Album> list = new DoublyLinkedList<>();
+        Node temp = head;
+        while (temp != null) {
+            if (temp.album.compareTo(album) == 1) {
+                list.append(album);
+            } else if (temp.album.compareTo(album) > 1) {
+                list.append(album);
+            }
+                temp = temp.next;
+
+        }
+        return list;
+    }
+
 
     @Override
     public String toString() {

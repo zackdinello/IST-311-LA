@@ -68,7 +68,34 @@ public class DoublyLinkedListTest {
 
     @Test
     void testDelete() {
+        DoublyLinkedList<Album> dll = new DoublyLinkedList<>();
 
+
+        ArrayList<String> artistNames = new ArrayList<>();
+        artistNames.add("Artist 1");
+        artistNames.add("Artist 2");
+
+        ArrayList<String> artistNames1 = new ArrayList<>();
+        artistNames1.add("Artist 1");
+        artistNames1.add("Artist 2");
+
+        Album a1 = new Album(1, artistNames, "album 1", 1);
+        dll.insert(1,a1);
+        //assertEquals(1, dll.getIndex(a1));
+
+        Album a2 = new Album(2, artistNames, "album 2", 1);
+        dll.insert(2,a2);
+        assertEquals(2, dll.getIndex(a2));
+
+        Album a3 = new Album(3, artistNames, "album 3", 3);
+        dll.insert(3,a3);
+        assertEquals(3, dll.getIndex(a3));
+
+        assertEquals(1, dll.head.album.numberOfSongs);
+        dll.delete(2);
+
+
+        assertEquals("1 -> 3 -> NULL", dll.toString());
 
     }
 
@@ -89,9 +116,40 @@ public class DoublyLinkedListTest {
 
     @Test
     void testPartition() {
+        DoublyLinkedList<Album> dll = new DoublyLinkedList<>();
 
 
+        ArrayList<String> artistNames = new ArrayList<>();
+        artistNames.add("Artist 1");
+        artistNames.add("Artist 2");
 
+        ArrayList<String> artistNames1 = new ArrayList<>();
+        artistNames1.add("Artist 1");
+        artistNames1.add("Artist 2");
+
+        Album a1 = new Album(1, artistNames, "album 1", 1);
+        dll.insert(1,a1);
+        //assertEquals(1, dll.getIndex(a1));
+
+        Album a2 = new Album(2, artistNames, "album 2", 1);
+        dll.insert(2,a2);
+        assertEquals(2, dll.getIndex(a2));
+
+        Album a3 = new Album(3, artistNames, "album 3", 3);
+        dll.insert(3,a3);
+        assertEquals(3, dll.getIndex(a3));
+
+        Album a4 = new Album(4, artistNames, "album 4", 3);
+        dll.insert(4,a3);
+        assertEquals(4, dll.getIndex(a4));
+
+        Album a5 = new Album(5, artistNames, "album 5", 3);
+        dll.insert(4,a5);
+        assertEquals(4, dll.getIndex(a5));
+
+        dll.partition(a2);
+
+        assertEquals("2 -> 3 -> 4 -> NULL", dll.toString());
     }
 
     @Test

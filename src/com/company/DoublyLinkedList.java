@@ -167,6 +167,8 @@ public class DoublyLinkedList <T extends Comparable<T>> {
 
     public Node shuffle() {
         Node temp = head;
+
+        /*
         int randomX = (int) (Math.random() * 10 + 1);
 
 //simply go until the randomX
@@ -185,6 +187,8 @@ public class DoublyLinkedList <T extends Comparable<T>> {
 
 //now set the Head to the Nth node we found
         head = temp;
+
+         */
         return head;
     }
 

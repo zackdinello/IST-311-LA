@@ -21,18 +21,23 @@ public class DoublyLinkedList <T extends Comparable<T>> {
         //create a new node
         Node toAppend = new Node(album);
 
-        //check if list is empty
-        if (head == null) {
+        //1. allocate node to new element
+
+
+        if(head == null){
             head = toAppend;
-            tail = toAppend;
+            toAppend.previous = null;
+            toAppend.next = null;
+        }else {
+            Node temp = head;
+            while (temp.next != null){
+                temp = temp.next;
+            }
+            temp.next = toAppend;
+            toAppend.previous = temp;
+
         }
 
-        //if list length is one or more than one
-        else {
-            toAppend.previous = tail;
-            tail.next = toAppend;
-            tail = tail.next;
-        }
 
 
         //return node
@@ -167,6 +172,24 @@ public class DoublyLinkedList <T extends Comparable<T>> {
 
     public Node shuffle() {
         Node temp = head;
+        head = head.next;
+
+        temp.previous = head;
+        head.previous = null;
+        temp.next = head.next.next;
+        head.next = temp;
+
+        Node  temp1 = head;
+        while (temp1.next.next != null){
+            temp1 = temp1.next;
+        }
+
+        Node temp2 = temp1.next;
+        temp2.next = temp1;
+        temp2.previous = temp1.previous;
+        temp1.previous = null;
+
+
 
         /*
         int randomX = (int) (Math.random() * 10 + 1);

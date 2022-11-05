@@ -49,7 +49,7 @@ public class DoublyLinkedListTest {
 
         Album a1 = new Album(1, artistNames, "album 1", 1);
         dll.insert(1,a1);
-        //assertEquals(1, dll.getIndex(a1));
+        assertEquals(1, dll.getIndex(a1));
 
         Album a2 = new Album(2, artistNames, "album 2", 1);
         dll.insert(2,a2);

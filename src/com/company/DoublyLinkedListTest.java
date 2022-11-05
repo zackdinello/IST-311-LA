@@ -61,7 +61,7 @@ public class DoublyLinkedListTest {
 
         assertEquals(1, dll.head.album.numberOfSongs);
 
-        //assertEquals("1 -> NULL", dll.toString());
+        assertEquals("1 -> NULL", dll.toString());
 
     }
 
